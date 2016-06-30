@@ -161,13 +161,15 @@ int answer=0;
 - (IBAction)minusPressed:(id)sender {
     self.typingNumber = NO;
     self.firstNumber = [self.calcDisplay.text intValue];
-    answer=answer - self.firstNumber;
+    
     self.operation = [sender currentTitle];
 }
 
 - (IBAction)mulitiplicationPressed:(id)sender {
+    
     self.typingNumber = NO;
     self.firstNumber = [self.calcDisplay.text intValue];
+    
     self.operation = [sender currentTitle];
 }
 
@@ -190,8 +192,9 @@ int answer=0;
         
     }
     else if ([self.operation isEqualToString:@"-"])
-    {
-        result = self.firstNumber - self.secondNumber;
+        
+    {   
+        result = self.firstNumber - answer;
     }
     else if ([self.operation isEqualToString:@"x"])
     {
@@ -199,7 +202,12 @@ int answer=0;
     }
     else if ([self.operation isEqualToString:@"/"])
     {
-        result = self.firstNumber / self.secondNumber;
+        if(!self.secondNumber==0){
+        	result = self.firstNumber / self.secondNumber;
+        }else{
+            result=0;
+        }
+        
     }
 
 
