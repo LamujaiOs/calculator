@@ -26,7 +26,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-
+int answer=0;
 
 - (IBAction)btnPress1:(UIButton *)sender {
     NSString *number = sender.currentTitle;
@@ -154,12 +154,14 @@
 - (IBAction)additionPressed:(id)sender {
     self.typingNumber = NO;
     self.firstNumber = [self.calcDisplay.text intValue];
+    answer=answer + self.firstNumber;
     self.operation = [sender currentTitle];
 }
 
 - (IBAction)minusPressed:(id)sender {
     self.typingNumber = NO;
     self.firstNumber = [self.calcDisplay.text intValue];
+    answer=answer - self.firstNumber;
     self.operation = [sender currentTitle];
 }
 
@@ -183,7 +185,8 @@
     
     if ([self.operation isEqualToString:@"+"])
     {
-        result = self.firstNumber + self.secondNumber;
+        result = answer + self.secondNumber;
+        
         
     }
     else if ([self.operation isEqualToString:@"-"])
@@ -202,11 +205,13 @@
 
     
     self.calcDisplay.text = [NSString stringWithFormat:@"%d", result];
+    answer=0;
 }
 
 - (IBAction)clear:(id)sender {
     self.firstNumber = 0;
     self.secondNumber = 0;
+    answer=0;
     self.calcDisplay.text = [NSString stringWithFormat:@"%d", 0];
 }
 @end
