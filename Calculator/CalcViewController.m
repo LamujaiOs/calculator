@@ -194,7 +194,7 @@ int answer=0;
     else if ([self.operation isEqualToString:@"-"])
         
     {   
-        result = self.firstNumber - answer;
+        result = self.firstNumber - self.secondNumber;
     }
     else if ([self.operation isEqualToString:@"x"])
     {
